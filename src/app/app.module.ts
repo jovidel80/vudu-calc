@@ -13,10 +13,18 @@ import {MatInputModule} from '@angular/material/input';
 import {ReactiveFormsModule} from '@angular/forms';
 import {MatButtonModule} from '@angular/material/button';
 import {MatTableModule} from '@angular/material/table';
+import { WebComponent } from './web/web.component';
+import { LinioComponent } from './linio/linio.component';
+import { RipleyComponent } from './ripley/ripley.component';
+import { FalabellaComponent } from './falabella/falabella.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    WebComponent,
+    LinioComponent,
+    RipleyComponent,
+    FalabellaComponent
   ],
   imports: [
     BrowserModule,
