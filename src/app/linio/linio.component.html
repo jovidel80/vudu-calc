@@ -5,24 +5,8 @@
             <br>
             <mat-card-content>
                 <div class="container">
-                    <form [formGroup]="vuduForm" (submit)="submit()">
+                    <form [formGroup]="vuduForm">
                         <div class="row">
-                            <div class="col">
-                                <mat-form-field appearance="outline">
-                                    <mat-label> PVP sugerido
-                                    </mat-label>
-                                    <input matInput class="sugerido w-auto" formControlName="pvpSugerido"
-                                           type="number">
-                                </mat-form-field>
-                            </div>
-<!--                            <div class="col">-->
-<!--                                <mat-form-field appearance="outline">-->
-<!--                                    <mat-label> PVP Sugerido + comisión-->
-<!--                                    </mat-label>-->
-<!--                                    <input matInput class="envio" formControlName="pvpSugeridoMasComision"-->
-<!--                                           type="number">-->
-<!--                                </mat-form-field>-->
-<!--                            </div>-->
                             <div class="col">
                                 <mat-form-field appearance="outline">
                                     <mat-label> PVP Publicado
@@ -50,10 +34,6 @@
                             <div class="col-12">
                                 <table mat-table [dataSource]="dataSource" class="mat-elevation-z3">
 
-                                    <!--- Note that these columns can be defined in any order.
-                                          The actual rendered columns are set as a property on the row definition" -->
-
-                                    <!-- Position Column -->
                                     <ng-container matColumnDef="pvpPublicado">
                                         <th mat-header-cell [matTooltip]="pvpPubSinIvaTT" *matHeaderCellDef>Pub - IVA
                                         </th>
@@ -61,7 +41,6 @@
                                             *matCellDef="let element"> {{pvpPublicadoSinIva() | number:'1.2-2'}} </td>
                                     </ng-container>
 
-                                    <!-- Name Column -->
                                     <ng-container matColumnDef="precioCosto">
                                         <th mat-header-cell *matHeaderCellDef>IVA PVP pub</th>
                                         <td mat-cell class="publicado"
