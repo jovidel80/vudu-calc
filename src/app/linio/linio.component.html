@@ -7,95 +7,179 @@
                 <div class="container">
                     <form [formGroup]="vuduForm">
                         <div class="row">
-                            <div class="col">
-                                <mat-form-field appearance="outline">
-                                    <mat-label> PVP Publicado
-                                    </mat-label>
-                                    <input matInput class="publicado" formControlName="pvpPublicado" type="number">
-                                </mat-form-field>
-                            </div>
-                            <div class="col">
-                                <mat-form-field appearance="outline">
-                                    <mat-label> Comisión Linio
-                                    </mat-label>
-                                    <input matInput class="publicado" formControlName="comision"
-                                           type="text">
-                                </mat-form-field>
-                            </div>
-                            <div class="col">
+                            <div class="col-3">
                                 <mat-form-field appearance="outline">
                                     <mat-label> Precio costo
                                     </mat-label>
                                     <input matInput class="costo" formControlName="precioCosto" type="number">
                                 </mat-form-field>
                             </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-12">
+                            <div class="col-9">
                                 <table mat-table [dataSource]="dataSource" class="mat-elevation-z3">
-
-                                    <ng-container matColumnDef="pvpPublicado">
-                                        <th mat-header-cell [matTooltip]="pvpPubSinIvaTT" *matHeaderCellDef>Pub - IVA
+                                    <ng-container matColumnDef="precioCostoIva">
+                                        <th mat-header-cell *matHeaderCellDef>Neto
+                                        </th>
+                                        <td mat-cell class="costo"
+                                            *matCellDef="let element"> {{precioCostoIva() | number:'1.2-2'}} </td>
+                                    </ng-container>
+                                    <ng-container matColumnDef="precioCostoBruto">
+                                        <th mat-header-cell *matHeaderCellDef>IVA
+                                        </th>
+                                        <td mat-cell class="costo"
+                                            *matCellDef="let element"> {{precioCostoBruto() | number:'1.2-2'}} </td>
+                                    </ng-container>
+                                    <tr mat-header-row *matHeaderRowDef="precioCostoDisplayedColumns"></tr>
+                                    <tr mat-row *matRowDef="let row; columns: precioCostoDisplayedColumns;"></tr>
+                                </table>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-3">
+                                <div class="row container">
+                                    <mat-form-field appearance="outline">
+                                        <mat-label> PVP Publicado
+                                        </mat-label>
+                                        <input matInput class="publicado" formControlName="pvpPublicado" type="number">
+                                    </mat-form-field>
+                                </div>
+                                <div class="row container centrar">
+                                    <span class="material-icons">remove_circle_outline</span>
+                                </div>
+                            </div>
+                            <div class="col-9">
+                                <table mat-table [dataSource]="dataSource" class="mat-elevation-z3">
+                                    <ng-container matColumnDef="netoPublicado">
+                                        <th mat-header-cell *matHeaderCellDef>Neto
                                         </th>
                                         <td mat-cell class="publicado"
-                                            *matCellDef="let element"> {{pvpPublicadoSinIva() | number:'1.2-2'}} </td>
+                                            *matCellDef="let element"> {{netoPublicado() | number:'1.2-2'}} </td>
                                     </ng-container>
-
-                                    <ng-container matColumnDef="precioCosto">
-                                        <th mat-header-cell *matHeaderCellDef>IVA PVP pub</th>
+                                    <ng-container matColumnDef="ivaPublicado">
+                                        <th mat-header-cell *matHeaderCellDef>IVA
+                                        </th>
                                         <td mat-cell class="publicado"
-                                            *matCellDef="let element">{{ivaPvpPublicado() | number: '1.2-2'}}</td>
+                                            *matCellDef="let element"> {{ivaPublicado() | number:'1.2-2'}} </td>
                                     </ng-container>
-
-                                    <ng-container matColumnDef="ivaPrecioCosto">
-                                        <th mat-header-cell *matHeaderCellDef>IVA prec cost</th>
-                                        <td mat-cell class="costo"
-                                            *matCellDef="let element"> {{calcIvaPrecioCosto() | number: '1.2-2'}} </td>
-                                    </ng-container>
-
-                                    <ng-container matColumnDef="pagaEnvio">
-                                        <th mat-header-cell *matHeaderCellDef>Envio</th>
-                                        <td mat-cell class="envio" *matCellDef="let element"> {{ envio }} </td>
-                                    </ng-container>
-
-                                    <ng-container matColumnDef="precioCostoNoIva">
-                                        <th mat-header-cell *matHeaderCellDef>Pre cost + IVA</th>
-                                        <td mat-cell class="costo"
-                                            *matCellDef="let element">{{precioCostoMasIva() | number: '1.2-2'}}</td>
-                                    </ng-container>
-
-                                    <ng-container matColumnDef="margenSugerido">
-                                        <th mat-header-cell *matHeaderCellDef>Mar sug</th>
+                                    <tr mat-header-row *matHeaderRowDef="publicadoDisplayedColumns"></tr>
+                                    <tr mat-row *matRowDef="let row; columns: publicadoDisplayedColumns;"></tr>
+                                </table>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-3">
+                                <div class="row container">
+                                    <mat-form-field appearance="outline">
+                                        <mat-label> Comisión Linio
+                                        </mat-label>
+                                        <input matInput class="sugerido" formControlName="comisionLinio" type="number">
+                                    </mat-form-field>
+                                </div>
+                                <div class="row container centrar">
+                                    <span class="material-icons">remove_circle_outline</span>
+                                </div>
+                            </div>
+                            <div class="col-9">
+                                <table mat-table [dataSource]="dataSource" class="mat-elevation-z3">
+                                    <ng-container matColumnDef="netoLinio">
+                                        <th mat-header-cell *matHeaderCellDef>Neto
+                                        </th>
                                         <td mat-cell class="sugerido"
-                                            *matCellDef="let element"> {{ gananciaSugerida() | number: '1.2-2'}} </td>
+                                            *matCellDef="let element"> {{netoLinio() | number:'1.2-2'}} </td>
                                     </ng-container>
-
-                                    <ng-container matColumnDef="margenReal">
-                                        <th mat-header-cell *matHeaderCellDef>Mar real</th>
-                                        <td mat-cell class="publicado"
-                                            *matCellDef="let element"> {{gananciaReal() | number: '1.2-2'}} </td>
-                                    </ng-container>
-
-                                    <ng-container matColumnDef="margenSugeridoPorcentual">
-                                        <th mat-header-cell *matHeaderCellDef>% sug</th>
+                                    <ng-container matColumnDef="ivaLinio">
+                                        <th mat-header-cell *matHeaderCellDef>IVA
+                                        </th>
                                         <td mat-cell class="sugerido"
-                                            *matCellDef="let element"> {{ gananciaSugerida() / precioSugeridoSinIva() | percent }} </td>
+                                            *matCellDef="let element"> {{ivaLinio() | number:'1.2-2'}} </td>
                                     </ng-container>
-
-                                    <ng-container matColumnDef="margenRealPorcentual">
-                                        <th mat-header-cell *matHeaderCellDef>% real</th>
+                                    <tr mat-header-row *matHeaderRowDef="linioDisplayedColumns"></tr>
+                                    <tr mat-row *matRowDef="let row; columns: linioDisplayedColumns;"></tr>
+                                </table>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-3">
+                                <div class="row container">
+                                    <mat-form-field appearance="outline">
+                                        <mat-label> Envio
+                                        </mat-label>
+                                        <input matInput class="envio" formControlName="envio" type="number">
+                                    </mat-form-field>
+                                </div>
+                                <div class="row container centrar">
+                                    <span class="material-icons">drag_handle</span>
+                                </div>
+                            </div>
+                            <div class="col-9">
+                                <table mat-table [dataSource]="dataSource" class="mat-elevation-z3">
+                                    <ng-container matColumnDef="netoEnvio">
+                                        <th mat-header-cell *matHeaderCellDef>Neto
+                                        </th>
+                                        <td mat-cell class="envio"
+                                            *matCellDef="let element"> {{netoEnvio() | number:'1.2-2'}} </td>
+                                    </ng-container>
+                                    <ng-container matColumnDef="ivaEnvio">
+                                        <th mat-header-cell *matHeaderCellDef>IVA
+                                        </th>
+                                        <td mat-cell class="envio"
+                                            *matCellDef="let element"> {{ivaEnvio() | number:'1.2-2'}} </td>
+                                    </ng-container>
+                                    <tr mat-header-row *matHeaderRowDef="envioDisplayedColumns"></tr>
+                                    <tr mat-row *matRowDef="let row; columns: envioDisplayedColumns;"></tr>
+                                </table>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-3">
+                                <mat-form-field appearance="outline">
+                                    <mat-label> Venta - Comisión
+                                    </mat-label>
+                                    <input matInput class="publicado" formControlName="ventaMenosComision"
+                                           type="number">
+                                </mat-form-field>
+                            </div>
+                            <div class="col-9">
+                                <table mat-table [dataSource]="dataSource" class="mat-elevation-z3">
+                                    <ng-container matColumnDef="netoVentaMenosComision">
+                                        <th mat-header-cell *matHeaderCellDef>Neto
+                                        </th>
                                         <td mat-cell class="publicado"
-                                            *matCellDef="let element"> {{ gananciaReal() / (precioVentaFinal() / 1.19) | percent }} </td>
+                                            *matCellDef="let element"> {{netoVentaMenosComision() | number:'1.2-2'}} </td>
                                     </ng-container>
-
-                                    <ng-container matColumnDef="pvpPublicadoMenosComision">
-                                        <th mat-header-cell *matHeaderCellDef>PVP pub - com</th>
+                                    <ng-container matColumnDef="ivaVentaMenosComision">
+                                        <th mat-header-cell *matHeaderCellDef>IVA
+                                        </th>
                                         <td mat-cell class="publicado"
-                                            *matCellDef="let element"> {{ precioVentaFinal() | number: '1.2-2' }} </td>
+                                            *matCellDef="let element"> {{ivaVentaMenosComision() | number:'1.2-2'}} </td>
                                     </ng-container>
-
-                                    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-                                    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                                    <tr mat-header-row *matHeaderRowDef="ventaMenosComisionDisplayedColumns"></tr>
+                                    <tr mat-row *matRowDef="let row; columns: ventaMenosComisionDisplayedColumns;"></tr>
+                                </table>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-3">
+                                <mat-form-field appearance="outline">
+                                    <mat-label> Ganancia
+                                    </mat-label>
+                                    <input matInput class="ganancia" formControlName="ganancia" type="number">
+                                </mat-form-field>
+                            </div>
+                            <div class="col-9">
+                                <table mat-table [dataSource]="dataSource" class="mat-elevation-z3">
+                                    <ng-container matColumnDef="ganancia">
+                                        <th mat-header-cell *matHeaderCellDef>%
+                                        </th>
+                                        <td mat-cell class="ganancia"
+                                            *matCellDef="let element"> {{ganancia() | percent}} </td>
+                                    </ng-container>
+                                    <tr mat-header-row *matHeaderRowDef="gananciaDisplayedColumns"></tr>
+                                    <tr mat-row *matRowDef="let row; columns: gananciaDisplayedColumns;"></tr>
                                 </table>
                             </div>
                         </div>
