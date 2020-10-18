@@ -17,6 +17,9 @@ import { WebComponent } from './web/web.component';
 import { LinioComponent } from './linio/linio.component';
 import { RipleyComponent } from './ripley/ripley.component';
 import { FalabellaComponent } from './falabella/falabella.component';
+import {MatTooltipModule} from "@angular/material/tooltip";
+import {MatIconModule} from "@angular/material/icon";
+import {ClipboardModule} from "@angular/cdk/clipboard";
 
 @NgModule({
   declarations: [
@@ -26,20 +29,23 @@ import { FalabellaComponent } from './falabella/falabella.component';
     RipleyComponent,
     FalabellaComponent
   ],
-  imports: [
-    BrowserModule,
-    BrowserAnimationsModule,
-    MatToolbarModule,
-    MatCardModule,
-    AppRoutingModule,
-    HttpClientModule,
-    MatListModule,
-    MatFormFieldModule,
-    MatInputModule,
-    ReactiveFormsModule,
-    MatButtonModule,
-    MatTableModule
-  ],
+    imports: [
+        BrowserModule,
+        BrowserAnimationsModule,
+        MatToolbarModule,
+        MatCardModule,
+        AppRoutingModule,
+        HttpClientModule,
+        MatListModule,
+        MatFormFieldModule,
+        MatInputModule,
+        ReactiveFormsModule,
+        MatButtonModule,
+        MatTableModule,
+        MatTooltipModule,
+        MatIconModule,
+        ClipboardModule
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })

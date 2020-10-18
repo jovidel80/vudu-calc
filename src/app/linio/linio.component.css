@@ -2,6 +2,24 @@ table {
     width: 100%;
 }
 
-.linio-color {
-    background: lightcoral;
+.sugerido {
+    color: darkmagenta;
+}
+
+.publicado {
+    color: mediumpurple;
+}
+
+.costo {
+    color: darkturquoise;
+}
+
+.envio {
+    color: lightcoral;
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
 }

@@ -1,6 +1,6 @@
 <div class="container">
     <div class="mt-5">
-        <mat-card class="linio-color">
+        <mat-card>
             <mat-card-title>Linio</mat-card-title>
             <br>
             <mat-card-content>
@@ -9,35 +9,45 @@
                         <div class="row">
                             <div class="col">
                                 <mat-form-field appearance="outline">
-                                    <mat-label> Precio sugerido
+                                    <mat-label> PVP sugerido
                                     </mat-label>
-                                    <input matInput formControlName="pvpSugerido" type="number" required>
+                                    <input matInput class="sugerido w-auto" formControlName="pvpSugerido"
+                                           type="number">
                                 </mat-form-field>
                             </div>
+<!--                            <div class="col">-->
+<!--                                <mat-form-field appearance="outline">-->
+<!--                                    <mat-label> PVP Sugerido + comisión-->
+<!--                                    </mat-label>-->
+<!--                                    <input matInput class="envio" formControlName="pvpSugeridoMasComision"-->
+<!--                                           type="number">-->
+<!--                                </mat-form-field>-->
+<!--                            </div>-->
                             <div class="col">
                                 <mat-form-field appearance="outline">
                                     <mat-label> PVP Publicado
                                     </mat-label>
-                                    <input matInput formControlName="pvpPublicado" type="number" required>
+                                    <input matInput class="publicado" formControlName="pvpPublicado" type="number">
+                                </mat-form-field>
+                            </div>
+                            <div class="col">
+                                <mat-form-field appearance="outline">
+                                    <mat-label> Comisión Linio
+                                    </mat-label>
+                                    <input matInput class="publicado" formControlName="comision"
+                                           type="text">
                                 </mat-form-field>
                             </div>
                             <div class="col">
                                 <mat-form-field appearance="outline">
                                     <mat-label> Precio costo
                                     </mat-label>
-                                    <input matInput formControlName="precioCosto" type="number" required>
+                                    <input matInput class="costo" formControlName="precioCosto" type="number">
                                 </mat-form-field>
                             </div>
-                            <!--              <div class="col">-->
-                            <!--                <mat-form-field appearance="outline">-->
-                            <!--                  <mat-label> Precio sin IVA-->
-                            <!--                  </mat-label>-->
-                            <!--                  <input matInput formControlName="precioSinIva" type="number" required>-->
-                            <!--                </mat-form-field>-->
-                            <!--              </div>-->
                         </div>
                         <div class="row">
-                            <div class="col">
+                            <div class="col-12">
                                 <table mat-table [dataSource]="dataSource" class="mat-elevation-z3">
 
                                     <!--- Note that these columns can be defined in any order.
@@ -45,36 +55,64 @@
 
                                     <!-- Position Column -->
                                     <ng-container matColumnDef="pvpPublicado">
-                                        <th mat-header-cell *matHeaderCellDef>PVP publicado sin IVA</th>
-                                        <td mat-cell *matCellDef="let element"> {{calcularPvpSinIva() | number:'1.2-2'}} </td>
+                                        <th mat-header-cell [matTooltip]="pvpPubSinIvaTT" *matHeaderCellDef>Pub - IVA
+                                        </th>
+                                        <td mat-cell class="publicado"
+                                            *matCellDef="let element"> {{pvpPublicadoSinIva() | number:'1.2-2'}} </td>
                                     </ng-container>
 
                                     <!-- Name Column -->
                                     <ng-container matColumnDef="precioCosto">
-                                        <th mat-header-cell *matHeaderCellDef>IVA</th>
-                                        <td mat-cell *matCellDef="let element">{{calcularIva() | number: '1.2-2'}}</td>
+                                        <th mat-header-cell *matHeaderCellDef>IVA PVP pub</th>
+                                        <td mat-cell class="publicado"
+                                            *matCellDef="let element">{{ivaPvpPublicado() | number: '1.2-2'}}</td>
                                     </ng-container>
 
-                                    <!-- Weight Column -->
-                                    <ng-container matColumnDef="precioCostoNoIva">
-                                        <th mat-header-cell *matHeaderCellDef>Precio costo sin IVA</th>
-                                        <td mat-cell *matCellDef="let element">{{calcularPrecioCostoSinIva() | number: '1.2-2'}}</td>
-                                    </ng-container>
-
-                                    <!-- Symbol Column -->
                                     <ng-container matColumnDef="ivaPrecioCosto">
-                                        <th mat-header-cell *matHeaderCellDef>IVA precio costo</th>
-                                        <td mat-cell *matCellDef="let element"> {{calcIvaPrecioCosto() | number: '1.2-2'}} </td>
+                                        <th mat-header-cell *matHeaderCellDef>IVA prec cost</th>
+                                        <td mat-cell class="costo"
+                                            *matCellDef="let element"> {{calcIvaPrecioCosto() | number: '1.2-2'}} </td>
+                                    </ng-container>
+
+                                    <ng-container matColumnDef="pagaEnvio">
+                                        <th mat-header-cell *matHeaderCellDef>Envio</th>
+                                        <td mat-cell class="envio" *matCellDef="let element"> {{ envio }} </td>
+                                    </ng-container>
+
+                                    <ng-container matColumnDef="precioCostoNoIva">
+                                        <th mat-header-cell *matHeaderCellDef>Pre cost + IVA</th>
+                                        <td mat-cell class="costo"
+                                            *matCellDef="let element">{{precioCostoMasIva() | number: '1.2-2'}}</td>
                                     </ng-container>
 
                                     <ng-container matColumnDef="margenSugerido">
-                                        <th mat-header-cell *matHeaderCellDef>Margen sugerido</th>
-                                        <td mat-cell *matCellDef="let element"> {{calcPrecioSugeridoSinIva() - calcularPrecioCostoSinIva() | number: '1.2-2'}} </td>
+                                        <th mat-header-cell *matHeaderCellDef>Mar sug</th>
+                                        <td mat-cell class="sugerido"
+                                            *matCellDef="let element"> {{ gananciaSugerida() | number: '1.2-2'}} </td>
                                     </ng-container>
 
                                     <ng-container matColumnDef="margenReal">
-                                        <th mat-header-cell *matHeaderCellDef>Margen real</th>
-                                        <td mat-cell *matCellDef="let element"> {{calcularPvpSinIva() - calcularPrecioCostoSinIva() | number: '1.2-2'}} </td>
+                                        <th mat-header-cell *matHeaderCellDef>Mar real</th>
+                                        <td mat-cell class="publicado"
+                                            *matCellDef="let element"> {{gananciaReal() | number: '1.2-2'}} </td>
+                                    </ng-container>
+
+                                    <ng-container matColumnDef="margenSugeridoPorcentual">
+                                        <th mat-header-cell *matHeaderCellDef>% sug</th>
+                                        <td mat-cell class="sugerido"
+                                            *matCellDef="let element"> {{ gananciaSugerida() / precioSugeridoSinIva() | percent }} </td>
+                                    </ng-container>
+
+                                    <ng-container matColumnDef="margenRealPorcentual">
+                                        <th mat-header-cell *matHeaderCellDef>% real</th>
+                                        <td mat-cell class="publicado"
+                                            *matCellDef="let element"> {{ gananciaReal() / (precioVentaFinal() / 1.19) | percent }} </td>
+                                    </ng-container>
+
+                                    <ng-container matColumnDef="pvpPublicadoMenosComision">
+                                        <th mat-header-cell *matHeaderCellDef>PVP pub - com</th>
+                                        <td mat-cell class="publicado"
+                                            *matCellDef="let element"> {{ precioVentaFinal() | number: '1.2-2' }} </td>
                                     </ng-container>
 
                                     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
@@ -82,11 +120,6 @@
                                 </table>
                             </div>
                         </div>
-                        <!--            <div class="row">-->
-                        <!--              <div class="col mt-4 text-center">-->
-                        <!--                <button mat-raised-button color="primary" type="submit">Log In</button>-->
-                        <!--              </div>-->
-                        <!--            </div>-->
                     </form>
                 </div>
             </mat-card-content>

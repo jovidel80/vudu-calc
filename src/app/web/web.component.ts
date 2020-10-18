@@ -1,14 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {FormBuilder, FormGroup} from "@angular/forms";
-
-export interface PeriodicElement {
-  pvpPublicado: number;
-  precioCosto: number;
-}
-
-const ELEMENT_DATA: PeriodicElement[] = [
-  {pvpPublicado: 333, precioCosto: 444}
-];
+import {AbstractControl, FormBuilder, FormGroup} from "@angular/forms";
 
 @Component({
   selector: 'app-web',
@@ -18,22 +9,40 @@ const ELEMENT_DATA: PeriodicElement[] = [
 export class WebComponent implements OnInit {
 
   vuduForm: FormGroup;
+  formControls: {
+    pvpSugerido: AbstractControl,
+    pvpPublicado: AbstractControl,
+    precioCosto: AbstractControl,
+    precioSinIva: AbstractControl
+  }
 
-  displayedColumns: string[] = ['pvpPublicado', 'precioCosto', 'precioCostoNoIva', 'ivaPrecioCosto', 'margenSugerido', 'margenReal'];
-  dataSource = ELEMENT_DATA;
+  pvpPubSinIvaTT: string;
+
+  displayedColumns: string[] = ['pvpPublicado', 'precioCosto', 'ivaPrecioCosto', 'precioCostoNoIva', 'margenSugerido', 'margenReal', 'margenSugeridoPorcentual', 'margenRealPorcentual'];
+  dataSource = [null];
 
   constructor(
       private formBuilder: FormBuilder
   ) {
-  }
-
-  ngOnInit(): void {
     this.vuduForm = this.formBuilder.group({
       pvpSugerido: [null],
       pvpPublicado: [null],
       precioCosto: [null],
       precioSinIva: [null]
     });
+
+    this.formControls = {
+      pvpSugerido: this.vuduForm.get('pvpSugerido'),
+      pvpPublicado: this.vuduForm.get('pvpPublicado'),
+      precioCosto: this.vuduForm.get('precioCosto'),
+      precioSinIva: this.vuduForm.get('precioSinIva')
+    }
+
+    this.pvpPubSinIvaTT = 'Precio publicado sin IVA, ya que el cliente ve el precio con IVA incluido (PVP publicado)'
+  }
+
+  ngOnInit(): void {
+
   }
 
   submit(): void {
@@ -43,24 +52,31 @@ export class WebComponent implements OnInit {
     console.log(this.vuduForm.value);
   }
 
-  calcularPvpSinIva(): number {
+  pvpPublicadoSinIva(): number {
     return this.vuduForm.controls.pvpPublicado.value / 1.19;
   }
 
-  calcularIva(): number {
-    return this.calcularPvpSinIva() * 0.19;
+  ivaPvpPublicado(): number {
+    return this.pvpPublicadoSinIva() * 0.19;
   }
 
-  calcularPrecioCostoSinIva(): number {
-    return this.vuduForm.controls.precioCosto.value / 1.19;
+  precioCostoMasIva(): number {
+    return this.formControls.precioCosto.value + this.calcIvaPrecioCosto();
   }
 
   calcIvaPrecioCosto(): {} {
-    return this.calcularPrecioCostoSinIva() * 0.19;
+    return this.formControls.precioCosto.value * 0.19;
   }
 
-  calcPrecioSugeridoSinIva(): number {
-    return this.vuduForm.controls.pvpSugerido.value / 1.19;
+  precioSugeridoSinIva(): number {
+    return this.formControls.pvpSugerido.value / 1.19;
   }
 
+  gananciaReal(): number {
+    return this.pvpPublicadoSinIva() - this.formControls.precioCosto.value;
+  }
+
+  gananciaSugerida(): number {
+    return this.precioSugeridoSinIva() - this.formControls.precioCosto.value;
+  }
 }

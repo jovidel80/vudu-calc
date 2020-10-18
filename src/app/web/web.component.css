@@ -2,6 +2,20 @@ table {
     width: 100%;
 }
 
-.web-color {
-    background: lightgreen;
+.sugerido {
+    color: darkmagenta;
+}
+
+.publicado {
+    color: mediumpurple;
+}
+
+.costo {
+    color: darkturquoise;
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
 }
