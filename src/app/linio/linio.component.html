@@ -17,13 +17,13 @@
                             <div class="col-9">
                                 <table mat-table [dataSource]="dataSource" class="mat-elevation-z3">
                                     <ng-container matColumnDef="precioCostoIva">
-                                        <th mat-header-cell *matHeaderCellDef>Neto
+                                        <th mat-header-cell *matHeaderCellDef>IVA
                                         </th>
                                         <td mat-cell class="costo"
                                             *matCellDef="let element"> {{precioCostoIva() | number:'1.2-2'}} </td>
                                     </ng-container>
                                     <ng-container matColumnDef="precioCostoBruto">
-                                        <th mat-header-cell *matHeaderCellDef>IVA
+                                        <th mat-header-cell *matHeaderCellDef>Valor bruto
                                         </th>
                                         <td mat-cell class="costo"
                                             *matCellDef="let element"> {{precioCostoBruto() | number:'1.2-2'}} </td>
