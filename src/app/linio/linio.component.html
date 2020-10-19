@@ -22,7 +22,7 @@
                                     <ng-container matColumnDef="precioCostoIva">
                                         <th mat-header-cell *matHeaderCellDef>IVA</th>
                                         <td mat-cell class="costo"
-                                            *matCellDef="let element"> {{precioCostoIva() | number:'1.2-2'}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button [cdkCopyToClipboard]="precioCostoIva() | number:'1.2-2'" mat-icon-button matSuffix>
+                                            *matCellDef="let element"> {{precioCostoIva() | number:'1.2-2':'cl'}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button [cdkCopyToClipboard]="precioCostoIva() | number:'1.2-2':'cl'" mat-icon-button matSuffix>
                                             <mat-icon>content_copy</mat-icon>
                                         </button>
                                         </td>
@@ -31,8 +31,8 @@
                                         <th mat-header-cell *matHeaderCellDef>Bruto
                                         </th>
                                         <td mat-cell class="costo"
-                                            *matCellDef="let element"> {{precioCostoBruto() | number:'1.2-2'}}
-                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button [cdkCopyToClipboard]="precioCostoBruto() | number:'1.2-2'" mat-icon-button matSuffix>
+                                            *matCellDef="let element"> {{precioCostoBruto() | number:'1.2-2':'cl'}}
+                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button [cdkCopyToClipboard]="precioCostoBruto() | number:'1.2-2':'cl'" mat-icon-button matSuffix>
                                                 <mat-icon>content_copy</mat-icon>
                                             </button>
                                         </td>
@@ -65,8 +65,8 @@
                                         <th mat-header-cell *matHeaderCellDef>Neto
                                         </th>
                                         <td mat-cell class="publicado"
-                                            *matCellDef="let element"> {{netoPublicado() | number:'1.2-2'}}
-                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button [cdkCopyToClipboard]="netoPublicado() | number:'1.2-2'" mat-icon-button matSuffix>
+                                            *matCellDef="let element"> {{netoPublicado() | number:'1.2-2':'cl'}}
+                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button [cdkCopyToClipboard]="netoPublicado() | number:'1.2-2':'cl'" mat-icon-button matSuffix>
                                                 <mat-icon>content_copy</mat-icon>
                                             </button>
                                         </td>
@@ -75,8 +75,8 @@
                                         <th mat-header-cell *matHeaderCellDef>IVA
                                         </th>
                                         <td mat-cell class="publicado"
-                                            *matCellDef="let element"> {{ivaPublicado() | number:'1.2-2'}}
-                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button [cdkCopyToClipboard]="ivaPublicado() | number:'1.2-2'" mat-icon-button matSuffix>
+                                            *matCellDef="let element"> {{ivaPublicado() | number:'1.2-2':'cl'}}
+                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button [cdkCopyToClipboard]="ivaPublicado() | number:'1.2-2':'cl'" mat-icon-button matSuffix>
                                                 <mat-icon>content_copy</mat-icon>
                                             </button>
                                         </td>
@@ -109,8 +109,8 @@
                                         <th mat-header-cell *matHeaderCellDef>Neto
                                         </th>
                                         <td mat-cell class="sugerido"
-                                            *matCellDef="let element"> {{netoLinio() | number:'1.2-2'}}
-                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button [cdkCopyToClipboard]="netoLinio() | number:'1.2-2'" mat-icon-button matSuffix>
+                                            *matCellDef="let element"> {{netoLinio() | number:'1.2-2':'cl'}}
+                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button [cdkCopyToClipboard]="netoLinio() | number:'1.2-2':'cl'" mat-icon-button matSuffix>
                                                 <mat-icon>content_copy</mat-icon>
                                             </button>
                                         </td>
@@ -119,8 +119,8 @@
                                         <th mat-header-cell *matHeaderCellDef>IVA
                                         </th>
                                         <td mat-cell class="sugerido"
-                                            *matCellDef="let element"> {{ivaLinio() | number:'1.2-2'}}
-                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button [cdkCopyToClipboard]="ivaLinio() | number:'1.2-2'" mat-icon-button matSuffix>
+                                            *matCellDef="let element"> {{ivaLinio() | number:'1.2-2':'cl'}}
+                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button [cdkCopyToClipboard]="ivaLinio() | number:'1.2-2':'cl'" mat-icon-button matSuffix>
                                                 <mat-icon>content_copy</mat-icon>
                                             </button>
                                         </td>
@@ -153,8 +153,8 @@
                                         <th mat-header-cell *matHeaderCellDef>Neto
                                         </th>
                                         <td mat-cell class="envio"
-                                            *matCellDef="let element"> {{netoEnvio() | number:'1.2-2'}}
-                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button [cdkCopyToClipboard]="netoEnvio() | number:'1.2-2'" mat-icon-button matSuffix>
+                                            *matCellDef="let element"> {{netoEnvio() | number:'1.2-2':'cl'}}
+                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button [cdkCopyToClipboard]="netoEnvio() | number:'1.2-2':'cl'" mat-icon-button matSuffix>
                                                 <mat-icon>content_copy</mat-icon>
                                             </button>
                                         </td>
@@ -163,8 +163,8 @@
                                         <th mat-header-cell *matHeaderCellDef>IVA
                                         </th>
                                         <td mat-cell class="envio"
-                                            *matCellDef="let element"> {{ivaEnvio() | number:'1.2-2'}}
-                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button [cdkCopyToClipboard]="ivaEnvio() | number:'1.2-2'" mat-icon-button matSuffix>
+                                            *matCellDef="let element"> {{ivaEnvio() | number:'1.2-2':'cl'}}
+                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button [cdkCopyToClipboard]="ivaEnvio() | number:'1.2-2':'cl'" mat-icon-button matSuffix>
                                                 <mat-icon>content_copy</mat-icon>
                                             </button>
                                         </td>
@@ -193,8 +193,8 @@
                                         <th mat-header-cell *matHeaderCellDef>Neto
                                         </th>
                                         <td mat-cell class="publicado"
-                                            *matCellDef="let element"> {{netoVentaMenosComision() | number:'1.2-2'}}
-                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button [cdkCopyToClipboard]="netoVentaMenosComision() | number:'1.2-2'" mat-icon-button matSuffix>
+                                            *matCellDef="let element"> {{netoVentaMenosComision() | number:'1.2-2':'cl'}}
+                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button [cdkCopyToClipboard]="netoVentaMenosComision() | number:'1.2-2':'cl'" mat-icon-button matSuffix>
                                                 <mat-icon>content_copy</mat-icon>
                                             </button>
                                         </td>
@@ -203,8 +203,8 @@
                                         <th mat-header-cell *matHeaderCellDef>IVA
                                         </th>
                                         <td mat-cell class="publicado"
-                                            *matCellDef="let element"> {{ivaVentaMenosComision() | number:'1.2-2'}}
-                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button [cdkCopyToClipboard]="ivaVentaMenosComision() | number:'1.2-2'" mat-icon-button matSuffix>
+                                            *matCellDef="let element"> {{ivaVentaMenosComision() | number:'1.2-2':'cl' }}
+                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button [cdkCopyToClipboard]="ivaVentaMenosComision() | number:'1.2-2':'cl'" mat-icon-button matSuffix>
                                                 <mat-icon>content_copy</mat-icon>
                                             </button>
                                         </td>

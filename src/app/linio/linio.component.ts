@@ -1,5 +1,8 @@
 import {Component} from '@angular/core';
 import {AbstractControl, FormBuilder, FormControl, FormGroup} from "@angular/forms";
+import { registerLocaleData } from '@angular/common';
+import localeCl from '@angular/common/locales/es-CL';
+registerLocaleData(localeCl, 'cl');
 
 @Component({
     selector: 'app-linio',
@@ -17,8 +20,6 @@ export class LinioComponent {
         ventaMenosComision: AbstractControl,
         ganancia: AbstractControl
     }
-
-    publicado = '';
 
     publicadoDisplayedColumns: string[] = [
         'netoPublicado',
@@ -50,16 +51,10 @@ export class LinioComponent {
     ];
 
     dataSource = [null];
-    envio: string;
-    envioNumerico: number;
-    comisionMasIva: number;
 
     constructor(
         private formBuilder: FormBuilder
     ) {
-        this.envio = '0';
-        this.envioNumerico = 0;
-        this.comisionMasIva = 0
         this.vuduForm = this.formBuilder.group({
             precioCosto: [null],
             pvpPublicado: [null],
@@ -82,16 +77,13 @@ export class LinioComponent {
         this.formControls.pvpPublicado.valueChanges.subscribe(value => {
             this.formControls.comisionLinio.setValue((value * 0.16).toFixed(2));
 
-            if (value > 15990) {
+            if (value >= 15990) {
                 this.formControls.envio.setValue(2200);
                 this.formControls.ventaMenosComision.setValue(value - this.vuduForm.controls.comisionLinio.value - 2200);
             } else {
                 this.formControls.envio.setValue(0);
                 this.formControls.ventaMenosComision.setValue(value - this.vuduForm.controls.comisionLinio.value);
             }
-
-            console.log(this.formControls.ventaMenosComision.value);
-            console.log(this.formControls.precioCosto.value);
 
             this.formControls.ganancia.setValue(
                 (this.netoVentaMenosComision() - this.formControls.precioCosto.value).toFixed(2));
