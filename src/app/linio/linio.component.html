@@ -12,21 +12,30 @@
                                     <mat-label> Precio costo
                                     </mat-label>
                                     <input matInput class="costo" formControlName="precioCosto" type="number">
+                                    <button [cdkCopyToClipboard]="formControls.precioCosto.value" mat-icon-button matSuffix>
+                                        <mat-icon>content_copy</mat-icon>
+                                    </button>
                                 </mat-form-field>
                             </div>
                             <div class="col-9">
                                 <table mat-table [dataSource]="dataSource" class="mat-elevation-z3">
                                     <ng-container matColumnDef="precioCostoIva">
-                                        <th mat-header-cell *matHeaderCellDef>IVA
-                                        </th>
+                                        <th mat-header-cell *matHeaderCellDef>IVA</th>
                                         <td mat-cell class="costo"
-                                            *matCellDef="let element"> {{precioCostoIva() | number:'1.2-2'}} </td>
+                                            *matCellDef="let element"> {{precioCostoIva() | number:'1.2-2'}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button [cdkCopyToClipboard]="precioCostoIva() | number:'1.2-2'" mat-icon-button matSuffix>
+                                            <mat-icon>content_copy</mat-icon>
+                                        </button>
+                                        </td>
                                     </ng-container>
                                     <ng-container matColumnDef="precioCostoBruto">
                                         <th mat-header-cell *matHeaderCellDef>Bruto
                                         </th>
                                         <td mat-cell class="costo"
-                                            *matCellDef="let element"> {{precioCostoBruto() | number:'1.2-2'}} </td>
+                                            *matCellDef="let element"> {{precioCostoBruto() | number:'1.2-2'}}
+                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button [cdkCopyToClipboard]="precioCostoBruto() | number:'1.2-2'" mat-icon-button matSuffix>
+                                                <mat-icon>content_copy</mat-icon>
+                                            </button>
+                                        </td>
                                     </ng-container>
                                     <tr mat-header-row *matHeaderRowDef="precioCostoDisplayedColumns"></tr>
                                     <tr mat-row *matRowDef="let row; columns: precioCostoDisplayedColumns;"></tr>
@@ -41,6 +50,9 @@
                                         <mat-label> PVP Publicado
                                         </mat-label>
                                         <input matInput class="publicado" formControlName="pvpPublicado" type="number">
+                                        <button [cdkCopyToClipboard]="formControls.pvpPublicado.value" mat-icon-button matSuffix>
+                                            <mat-icon>content_copy</mat-icon>
+                                        </button>
                                     </mat-form-field>
                                 </div>
                                 <div class="row container centrar">
@@ -53,13 +65,21 @@
                                         <th mat-header-cell *matHeaderCellDef>Neto
                                         </th>
                                         <td mat-cell class="publicado"
-                                            *matCellDef="let element"> {{netoPublicado() | number:'1.2-2'}} </td>
+                                            *matCellDef="let element"> {{netoPublicado() | number:'1.2-2'}}
+                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button [cdkCopyToClipboard]="netoPublicado() | number:'1.2-2'" mat-icon-button matSuffix>
+                                                <mat-icon>content_copy</mat-icon>
+                                            </button>
+                                        </td>
                                     </ng-container>
                                     <ng-container matColumnDef="ivaPublicado">
                                         <th mat-header-cell *matHeaderCellDef>IVA
                                         </th>
                                         <td mat-cell class="publicado"
-                                            *matCellDef="let element"> {{ivaPublicado() | number:'1.2-2'}} </td>
+                                            *matCellDef="let element"> {{ivaPublicado() | number:'1.2-2'}}
+                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button [cdkCopyToClipboard]="ivaPublicado() | number:'1.2-2'" mat-icon-button matSuffix>
+                                                <mat-icon>content_copy</mat-icon>
+                                            </button>
+                                        </td>
                                     </ng-container>
                                     <tr mat-header-row *matHeaderRowDef="publicadoDisplayedColumns"></tr>
                                     <tr mat-row *matRowDef="let row; columns: publicadoDisplayedColumns;"></tr>
@@ -70,10 +90,13 @@
                         <div class="row">
                             <div class="col-3">
                                 <div class="row container">
-                                    <mat-form-field appearance="outline">
+                                    <mat-form-field appearance="fill">
                                         <mat-label> Comisión Linio
                                         </mat-label>
                                         <input matInput class="sugerido" formControlName="comisionLinio" type="number">
+                                        <button [cdkCopyToClipboard]="formControls.comisionLinio.value" mat-icon-button matSuffix>
+                                            <mat-icon>content_copy</mat-icon>
+                                        </button>
                                     </mat-form-field>
                                 </div>
                                 <div class="row container centrar">
@@ -86,13 +109,21 @@
                                         <th mat-header-cell *matHeaderCellDef>Neto
                                         </th>
                                         <td mat-cell class="sugerido"
-                                            *matCellDef="let element"> {{netoLinio() | number:'1.2-2'}} </td>
+                                            *matCellDef="let element"> {{netoLinio() | number:'1.2-2'}}
+                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button [cdkCopyToClipboard]="netoLinio() | number:'1.2-2'" mat-icon-button matSuffix>
+                                                <mat-icon>content_copy</mat-icon>
+                                            </button>
+                                        </td>
                                     </ng-container>
                                     <ng-container matColumnDef="ivaLinio">
                                         <th mat-header-cell *matHeaderCellDef>IVA
                                         </th>
                                         <td mat-cell class="sugerido"
-                                            *matCellDef="let element"> {{ivaLinio() | number:'1.2-2'}} </td>
+                                            *matCellDef="let element"> {{ivaLinio() | number:'1.2-2'}}
+                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button [cdkCopyToClipboard]="ivaLinio() | number:'1.2-2'" mat-icon-button matSuffix>
+                                                <mat-icon>content_copy</mat-icon>
+                                            </button>
+                                        </td>
                                     </ng-container>
                                     <tr mat-header-row *matHeaderRowDef="linioDisplayedColumns"></tr>
                                     <tr mat-row *matRowDef="let row; columns: linioDisplayedColumns;"></tr>
@@ -103,10 +134,13 @@
                         <div class="row">
                             <div class="col-3">
                                 <div class="row container">
-                                    <mat-form-field appearance="outline">
+                                    <mat-form-field appearance="fill">
                                         <mat-label> Envio
                                         </mat-label>
                                         <input matInput class="envio" formControlName="envio" type="number">
+                                        <button [cdkCopyToClipboard]="formControls.envio.value" mat-icon-button matSuffix>
+                                            <mat-icon>content_copy</mat-icon>
+                                        </button>
                                     </mat-form-field>
                                 </div>
                                 <div class="row container centrar">
@@ -119,13 +153,21 @@
                                         <th mat-header-cell *matHeaderCellDef>Neto
                                         </th>
                                         <td mat-cell class="envio"
-                                            *matCellDef="let element"> {{netoEnvio() | number:'1.2-2'}} </td>
+                                            *matCellDef="let element"> {{netoEnvio() | number:'1.2-2'}}
+                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button [cdkCopyToClipboard]="netoEnvio() | number:'1.2-2'" mat-icon-button matSuffix>
+                                                <mat-icon>content_copy</mat-icon>
+                                            </button>
+                                        </td>
                                     </ng-container>
                                     <ng-container matColumnDef="ivaEnvio">
                                         <th mat-header-cell *matHeaderCellDef>IVA
                                         </th>
                                         <td mat-cell class="envio"
-                                            *matCellDef="let element"> {{ivaEnvio() | number:'1.2-2'}} </td>
+                                            *matCellDef="let element"> {{ivaEnvio() | number:'1.2-2'}}
+                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button [cdkCopyToClipboard]="ivaEnvio() | number:'1.2-2'" mat-icon-button matSuffix>
+                                                <mat-icon>content_copy</mat-icon>
+                                            </button>
+                                        </td>
                                     </ng-container>
                                     <tr mat-header-row *matHeaderRowDef="envioDisplayedColumns"></tr>
                                     <tr mat-row *matRowDef="let row; columns: envioDisplayedColumns;"></tr>
@@ -135,11 +177,14 @@
                         <hr>
                         <div class="row">
                             <div class="col-3">
-                                <mat-form-field appearance="outline">
+                                <mat-form-field appearance="fill">
                                     <mat-label> Venta - Comisión
                                     </mat-label>
                                     <input matInput class="publicado" formControlName="ventaMenosComision"
                                            type="number">
+                                    <button [cdkCopyToClipboard]="formControls.ventaMenosComision.value" mat-icon-button matSuffix>
+                                        <mat-icon>content_copy</mat-icon>
+                                    </button>
                                 </mat-form-field>
                             </div>
                             <div class="col-9">
@@ -148,13 +193,21 @@
                                         <th mat-header-cell *matHeaderCellDef>Neto
                                         </th>
                                         <td mat-cell class="publicado"
-                                            *matCellDef="let element"> {{netoVentaMenosComision() | number:'1.2-2'}} </td>
+                                            *matCellDef="let element"> {{netoVentaMenosComision() | number:'1.2-2'}}
+                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button [cdkCopyToClipboard]="netoVentaMenosComision() | number:'1.2-2'" mat-icon-button matSuffix>
+                                                <mat-icon>content_copy</mat-icon>
+                                            </button>
+                                        </td>
                                     </ng-container>
                                     <ng-container matColumnDef="ivaVentaMenosComision">
                                         <th mat-header-cell *matHeaderCellDef>IVA
                                         </th>
                                         <td mat-cell class="publicado"
-                                            *matCellDef="let element"> {{ivaVentaMenosComision() | number:'1.2-2'}} </td>
+                                            *matCellDef="let element"> {{ivaVentaMenosComision() | number:'1.2-2'}}
+                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button [cdkCopyToClipboard]="ivaVentaMenosComision() | number:'1.2-2'" mat-icon-button matSuffix>
+                                                <mat-icon>content_copy</mat-icon>
+                                            </button>
+                                        </td>
                                     </ng-container>
                                     <tr mat-header-row *matHeaderRowDef="ventaMenosComisionDisplayedColumns"></tr>
                                     <tr mat-row *matRowDef="let row; columns: ventaMenosComisionDisplayedColumns;"></tr>
@@ -164,10 +217,13 @@
                         <hr>
                         <div class="row">
                             <div class="col-3">
-                                <mat-form-field appearance="outline">
+                                <mat-form-field appearance="fill">
                                     <mat-label> Ganancia
                                     </mat-label>
                                     <input matInput class="ganancia" formControlName="ganancia" type="number">
+                                    <button [cdkCopyToClipboard]="formControls.ganancia.value" mat-icon-button matSuffix>
+                                        <mat-icon>content_copy</mat-icon>
+                                    </button>
                                 </mat-form-field>
                             </div>
                             <div class="col-9">
@@ -176,7 +232,11 @@
                                         <th mat-header-cell *matHeaderCellDef>%
                                         </th>
                                         <td mat-cell class="ganancia"
-                                            *matCellDef="let element"> {{ganancia() | percent}} </td>
+                                            *matCellDef="let element"> {{ganancia() | percent}}
+                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button [cdkCopyToClipboard]="ganancia() | percent:'1.2-2'" mat-icon-button matSuffix>
+                                                <mat-icon>content_copy</mat-icon>
+                                            </button>
+                                        </td>
                                     </ng-container>
                                     <tr mat-header-row *matHeaderRowDef="gananciaDisplayedColumns"></tr>
                                     <tr mat-row *matRowDef="let row; columns: gananciaDisplayedColumns;"></tr>

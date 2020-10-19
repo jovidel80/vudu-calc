@@ -18,6 +18,8 @@ export class LinioComponent {
         ganancia: AbstractControl
     }
 
+    publicado = '';
+
     publicadoDisplayedColumns: string[] = [
         'netoPublicado',
         'ivaPublicado'
