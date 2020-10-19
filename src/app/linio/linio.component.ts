@@ -133,4 +133,8 @@ export class LinioComponent {
     ganancia() {
         return this.formControls.ganancia.value / this.netoVentaMenosComision();
     }
+
+    reiniciar() {
+        this.vuduForm.reset();
+    }
 }
