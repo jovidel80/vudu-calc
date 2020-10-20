@@ -1,6 +1,5 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
-import { FalabellaComponent } from './falabella.component';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
+import {FalabellaComponent} from './falabella.component';
 
 describe('FalabellaComponent', () => {
   let component: FalabellaComponent;

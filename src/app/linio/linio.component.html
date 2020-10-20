@@ -12,7 +12,8 @@
                                     <mat-label> Precio costo
                                     </mat-label>
                                     <input matInput class="costo" formControlName="precioCosto" type="number">
-                                    <button [cdkCopyToClipboard]="formControls.precioCosto.value" mat-icon-button matSuffix>
+                                    <button [cdkCopyToClipboard]="formControls.precioCosto.value" mat-icon-button
+                                            matSuffix>
                                         <mat-icon>content_copy</mat-icon>
                                     </button>
                                 </mat-form-field>
@@ -22,7 +23,9 @@
                                     <ng-container matColumnDef="precioCostoIva">
                                         <th mat-header-cell *matHeaderCellDef>IVA</th>
                                         <td mat-cell class="costo"
-                                            *matCellDef="let element"> {{precioCostoIva() | number:'1.2-2':'cl'}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button [cdkCopyToClipboard]="precioCostoIva() | number:'1.2-2':'cl'" mat-icon-button matSuffix>
+                                            *matCellDef="let element"> {{precioCostoIva() | number:'1.2-2':'cl'}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button
+                                                [cdkCopyToClipboard]="precioCostoIva() | number:'1.2-2':'cl'"
+                                                mat-icon-button matSuffix>
                                             <mat-icon>content_copy</mat-icon>
                                         </button>
                                         </td>
@@ -32,7 +35,9 @@
                                         </th>
                                         <td mat-cell class="costo"
                                             *matCellDef="let element"> {{precioCostoBruto() | number:'1.2-2':'cl'}}
-                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button [cdkCopyToClipboard]="precioCostoBruto() | number:'1.2-2':'cl'" mat-icon-button matSuffix>
+                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button
+                                                    [cdkCopyToClipboard]="precioCostoBruto() | number:'1.2-2':'cl'"
+                                                    mat-icon-button matSuffix>
                                                 <mat-icon>content_copy</mat-icon>
                                             </button>
                                         </td>
@@ -50,7 +55,8 @@
                                         <mat-label> PVP Publicado
                                         </mat-label>
                                         <input matInput class="publicado" formControlName="pvpPublicado" type="number">
-                                        <button [cdkCopyToClipboard]="formControls.pvpPublicado.value" mat-icon-button matSuffix>
+                                        <button [cdkCopyToClipboard]="formControls.pvpPublicado.value" mat-icon-button
+                                                matSuffix>
                                             <mat-icon>content_copy</mat-icon>
                                         </button>
                                     </mat-form-field>
@@ -66,7 +72,9 @@
                                         </th>
                                         <td mat-cell class="publicado"
                                             *matCellDef="let element"> {{netoPublicado() | number:'1.2-2':'cl'}}
-                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button [cdkCopyToClipboard]="netoPublicado() | number:'1.2-2':'cl'" mat-icon-button matSuffix>
+                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button
+                                                    [cdkCopyToClipboard]="netoPublicado() | number:'1.2-2':'cl'"
+                                                    mat-icon-button matSuffix>
                                                 <mat-icon>content_copy</mat-icon>
                                             </button>
                                         </td>
@@ -76,7 +84,9 @@
                                         </th>
                                         <td mat-cell class="publicado"
                                             *matCellDef="let element"> {{ivaPublicado() | number:'1.2-2':'cl'}}
-                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button [cdkCopyToClipboard]="ivaPublicado() | number:'1.2-2':'cl'" mat-icon-button matSuffix>
+                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button
+                                                    [cdkCopyToClipboard]="ivaPublicado() | number:'1.2-2':'cl'"
+                                                    mat-icon-button matSuffix>
                                                 <mat-icon>content_copy</mat-icon>
                                             </button>
                                         </td>
@@ -94,7 +104,8 @@
                                         <mat-label> Comisión Linio
                                         </mat-label>
                                         <input matInput class="sugerido" formControlName="comisionLinio" type="number">
-                                        <button [cdkCopyToClipboard]="formControls.comisionLinio.value" mat-icon-button matSuffix>
+                                        <button [cdkCopyToClipboard]="formControls.comisionLinio.value" mat-icon-button
+                                                matSuffix>
                                             <mat-icon>content_copy</mat-icon>
                                         </button>
                                     </mat-form-field>
@@ -110,7 +121,9 @@
                                         </th>
                                         <td mat-cell class="sugerido"
                                             *matCellDef="let element"> {{netoLinio() | number:'1.2-2':'cl'}}
-                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button [cdkCopyToClipboard]="netoLinio() | number:'1.2-2':'cl'" mat-icon-button matSuffix>
+                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button
+                                                    [cdkCopyToClipboard]="netoLinio() | number:'1.2-2':'cl'"
+                                                    mat-icon-button matSuffix>
                                                 <mat-icon>content_copy</mat-icon>
                                             </button>
                                         </td>
@@ -120,7 +133,9 @@
                                         </th>
                                         <td mat-cell class="sugerido"
                                             *matCellDef="let element"> {{ivaLinio() | number:'1.2-2':'cl'}}
-                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button [cdkCopyToClipboard]="ivaLinio() | number:'1.2-2':'cl'" mat-icon-button matSuffix>
+                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button
+                                                    [cdkCopyToClipboard]="ivaLinio() | number:'1.2-2':'cl'"
+                                                    mat-icon-button matSuffix>
                                                 <mat-icon>content_copy</mat-icon>
                                             </button>
                                         </td>
@@ -138,7 +153,8 @@
                                         <mat-label> Envio
                                         </mat-label>
                                         <input matInput class="envio" formControlName="envio" type="number">
-                                        <button [cdkCopyToClipboard]="formControls.envio.value" mat-icon-button matSuffix>
+                                        <button [cdkCopyToClipboard]="formControls.envio.value" mat-icon-button
+                                                matSuffix>
                                             <mat-icon>content_copy</mat-icon>
                                         </button>
                                     </mat-form-field>
@@ -154,7 +170,9 @@
                                         </th>
                                         <td mat-cell class="envio"
                                             *matCellDef="let element"> {{netoEnvio() | number:'1.2-2':'cl'}}
-                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button [cdkCopyToClipboard]="netoEnvio() | number:'1.2-2':'cl'" mat-icon-button matSuffix>
+                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button
+                                                    [cdkCopyToClipboard]="netoEnvio() | number:'1.2-2':'cl'"
+                                                    mat-icon-button matSuffix>
                                                 <mat-icon>content_copy</mat-icon>
                                             </button>
                                         </td>
@@ -164,7 +182,9 @@
                                         </th>
                                         <td mat-cell class="envio"
                                             *matCellDef="let element"> {{ivaEnvio() | number:'1.2-2':'cl'}}
-                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button [cdkCopyToClipboard]="ivaEnvio() | number:'1.2-2':'cl'" mat-icon-button matSuffix>
+                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button
+                                                    [cdkCopyToClipboard]="ivaEnvio() | number:'1.2-2':'cl'"
+                                                    mat-icon-button matSuffix>
                                                 <mat-icon>content_copy</mat-icon>
                                             </button>
                                         </td>
@@ -182,7 +202,8 @@
                                     </mat-label>
                                     <input matInput class="publicado" formControlName="ventaMenosComision"
                                            type="number">
-                                    <button [cdkCopyToClipboard]="formControls.ventaMenosComision.value" mat-icon-button matSuffix>
+                                    <button [cdkCopyToClipboard]="formControls.ventaMenosComision.value" mat-icon-button
+                                            matSuffix>
                                         <mat-icon>content_copy</mat-icon>
                                     </button>
                                 </mat-form-field>
@@ -194,7 +215,9 @@
                                         </th>
                                         <td mat-cell class="publicado"
                                             *matCellDef="let element"> {{netoVentaMenosComision() | number:'1.2-2':'cl'}}
-                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button [cdkCopyToClipboard]="netoVentaMenosComision() | number:'1.2-2':'cl'" mat-icon-button matSuffix>
+                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button
+                                                    [cdkCopyToClipboard]="netoVentaMenosComision() | number:'1.2-2':'cl'"
+                                                    mat-icon-button matSuffix>
                                                 <mat-icon>content_copy</mat-icon>
                                             </button>
                                         </td>
@@ -204,7 +227,9 @@
                                         </th>
                                         <td mat-cell class="publicado"
                                             *matCellDef="let element"> {{ivaVentaMenosComision() | number:'1.2-2':'cl' }}
-                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button [cdkCopyToClipboard]="ivaVentaMenosComision() | number:'1.2-2':'cl'" mat-icon-button matSuffix>
+                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button
+                                                    [cdkCopyToClipboard]="ivaVentaMenosComision() | number:'1.2-2':'cl'"
+                                                    mat-icon-button matSuffix>
                                                 <mat-icon>content_copy</mat-icon>
                                             </button>
                                         </td>
@@ -221,7 +246,8 @@
                                     <mat-label> Ganancia
                                     </mat-label>
                                     <input matInput class="ganancia" formControlName="ganancia" type="number">
-                                    <button [cdkCopyToClipboard]="formControls.ganancia.value" mat-icon-button matSuffix>
+                                    <button [cdkCopyToClipboard]="formControls.ganancia.value" mat-icon-button
+                                            matSuffix>
                                         <mat-icon>content_copy</mat-icon>
                                     </button>
                                 </mat-form-field>
@@ -233,7 +259,9 @@
                                         </th>
                                         <td mat-cell class="ganancia"
                                             *matCellDef="let element"> {{ganancia() | percent}}
-                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button [cdkCopyToClipboard]="ganancia() | percent:'1.2-2'" mat-icon-button matSuffix>
+                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button
+                                                    [cdkCopyToClipboard]="ganancia() | percent:'1.2-2'" mat-icon-button
+                                                    matSuffix>
                                                 <mat-icon>content_copy</mat-icon>
                                             </button>
                                         </td>

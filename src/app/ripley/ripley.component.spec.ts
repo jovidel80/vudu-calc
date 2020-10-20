@@ -1,6 +1,5 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
-import { RipleyComponent } from './ripley.component';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
+import {RipleyComponent} from './ripley.component';
 
 describe('RipleyComponent', () => {
   let component: RipleyComponent;
