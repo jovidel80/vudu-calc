@@ -103,4 +103,48 @@ describe('LinioComponent', () => {
     it('test ventaMenosComision is 33071.6 when pvpPublicado is >= 15990', () => {
         expect(component.formControls.ventaMenosComision.value).toEqual(33071.6);
     });
+
+    it('test netoVentaMenosComision is 27791,26 when pvpPublicado is 41990', () => {
+        expect(component.netoVentaMenosComision().toFixed(2)).toEqual('27791.26');
+    });
+
+    it('test netoVentaMenosComision is 9169,41 when pvpPublicado is 12990', () => {
+        component.formControls.pvpPublicado.setValue(12990);
+        expect(component.netoVentaMenosComision().toFixed(2)).toEqual('9169.41');
+    });
+
+    it('test ivaVentaMenosComision is 5280.33 when pvpPublicado is 41990', () => {
+        expect(component.ivaVentaMenosComision().toFixed(2)).toEqual('5280.34');
+    });
+
+    it('test ivaVentaMenosComision is 1742.18 when pvpPublicado is 12990', () => {
+        component.formControls.pvpPublicado.setValue(12990);
+        expect(component.ivaVentaMenosComision().toFixed(2)).toEqual('1742.19');
+    });
+
+    it('test ganancia is 3848.26 when pvpPublicado is 41990', () => {
+        expect(component.formControls.ganancia.value).toEqual('3848.26');
+    });
+
+    it('test ganancia is 411.76 when pvpPublicado is 2000 and precioCosto is 1000', () => {
+        component.formControls.precioCosto.setValue(1000);
+        component.formControls.pvpPublicado.setValue(2000);
+        expect(component.formControls.ganancia.value).toEqual('411.76');
+    });
+
+    it('test % ganancia is 0.14 when pvpPublicado is 41990 and precioCosto is 21943', () => {
+        expect(component.ganancia().toFixed(2)).toEqual('0.14');
+    });
+
+    it('test % ganancia is 0.29 when pvpPublicado is 2000 and precioCosto is 1000', () => {
+        component.formControls.precioCosto.setValue(1000);
+        component.formControls.pvpPublicado.setValue(2000);
+        expect(component.ganancia().toFixed(2)).toEqual('0.29');
+    });
+
+    it('test reiniciar', () => {
+        component.reiniciar();
+        expect(component.formControls.precioCosto.value).toEqual(null);
+        expect(component.formControls.pvpPublicado.value).toEqual(null);
+    });
 });

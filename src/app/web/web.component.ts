@@ -45,13 +45,6 @@ export class WebComponent implements OnInit {
 
   }
 
-  submit(): void {
-    if (!this.vuduForm.valid) {
-      return;
-    }
-    console.log(this.vuduForm.value);
-  }
-
   pvpPublicadoSinIva(): number {
     return this.vuduForm.controls.pvpPublicado.value / 1.19;
   }
