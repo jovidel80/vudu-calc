@@ -74,6 +74,10 @@ export class LinioComponent {
             ganancia: this.vuduForm.get('ganancia'),
         }
 
+        this.formControls.precioCosto.valueChanges.subscribe(() => {
+            this.formControls.pvpPublicado.setValue(this.formControls.pvpPublicado.value);
+        });
+
         this.formControls.pvpPublicado.valueChanges.subscribe(value => {
             this.formControls.comisionLinio.setValue((value * 0.16).toFixed(2));
 
