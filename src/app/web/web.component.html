@@ -7,21 +7,32 @@
                 <div class="container">
                     <form [formGroup]="vuduForm">
                         <div class="row">
-                            <div class="col">
+                            <div class="col-md">
                                 <mat-form-field appearance="outline">
                                     <mat-label> Precio sugerido
                                     </mat-label>
                                     <input matInput class="sugerido" formControlName="pvpSugerido" type="number">
                                 </mat-form-field>
                             </div>
-                            <div class="col">
+                            <div class="col-md">
                                 <mat-form-field appearance="outline">
                                     <mat-label> PVP Publicado
                                     </mat-label>
                                     <input matInput class="publicado" formControlName="pvpPublicado" type="number">
                                 </mat-form-field>
                             </div>
-                            <div class="col">
+<!--                            <div class="row container centrar mb-3">-->
+                                <span class="material-icons">remove_circle_outline</span>
+<!--                            </div>-->
+                            <div class="col-md">
+                                <mat-form-field appearance="outline">
+                                    <mat-label> % Descuento
+                                    </mat-label>
+                                    <input matInput class="publicado" formControlName="descuento" type="number">
+                                </mat-form-field>
+                            </div>
+
+                            <div class="col-md">
                                 <mat-form-field appearance="outline">
                                     <mat-label> Precio costo
                                     </mat-label>
@@ -30,7 +41,7 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col">
+                            <div class="col-md">
                                 <table mat-table [dataSource]="dataSource" class="mat-elevation-z3">
 
                                     <!--- Note that these columns can be defined in any order.
@@ -38,44 +49,54 @@
 
                                     <!-- Position Column -->
                                     <ng-container matColumnDef="pvpPublicado">
-                                        <th mat-header-cell [matTooltip]="pvpPubSinIvaTT" *matHeaderCellDef>Publicado - IVA</th>
-                                        <td mat-cell class="publicado" *matCellDef="let element"> {{pvpPublicadoSinIva() | number:'1.2-2'}} </td>
+                                        <th mat-header-cell [matTooltip]="pvpPubSinIvaTT" *matHeaderCellDef>Publicado -
+                                            IVA
+                                        </th>
+                                        <td mat-cell class="publicado"
+                                            *matCellDef="let element"> {{pvpPublicadoSinIva() | number:'1.2-2'}} </td>
                                     </ng-container>
 
                                     <!-- Name Column -->
                                     <ng-container matColumnDef="precioCosto">
                                         <th mat-header-cell *matHeaderCellDef>IVA PVP publicado</th>
-                                        <td mat-cell class="publicado" *matCellDef="let element">{{ivaPvpPublicado() | number: '1.2-2'}}</td>
+                                        <td mat-cell class="publicado"
+                                            *matCellDef="let element">{{ivaPvpPublicado() | number: '1.2-2'}}</td>
                                     </ng-container>
 
                                     <ng-container matColumnDef="ivaPrecioCosto">
                                         <th mat-header-cell *matHeaderCellDef>IVA precio costo</th>
-                                        <td mat-cell class="costo" *matCellDef="let element"> {{calcIvaPrecioCosto() | number: '1.2-2'}} </td>
+                                        <td mat-cell class="costo"
+                                            *matCellDef="let element"> {{calcIvaPrecioCosto() | number: '1.2-2'}} </td>
                                     </ng-container>
                                     <!-- Weight Column -->
                                     <ng-container matColumnDef="precioCostoNoIva">
                                         <th mat-header-cell *matHeaderCellDef>Precio costo + IVA</th>
-                                        <td mat-cell class="costo" *matCellDef="let element">{{precioCostoMasIva() | number: '1.2-2'}}</td>
+                                        <td mat-cell class="costo"
+                                            *matCellDef="let element">{{precioCostoMasIva() | number: '1.2-2'}}</td>
                                     </ng-container>
 
                                     <ng-container matColumnDef="margenSugerido">
                                         <th mat-header-cell *matHeaderCellDef>Margen sugerido</th>
-                                        <td mat-cell class="sugerido" *matCellDef="let element"> {{ gananciaSugerida() | number: '1.2-2'}} </td>
+                                        <td mat-cell class="sugerido"
+                                            *matCellDef="let element"> {{ gananciaSugerida() | number: '1.2-2'}} </td>
                                     </ng-container>
 
                                     <ng-container matColumnDef="margenReal">
                                         <th mat-header-cell *matHeaderCellDef>Margen real</th>
-                                        <td mat-cell class="publicado" *matCellDef="let element"> {{gananciaReal() | number: '1.2-2'}} </td>
+                                        <td mat-cell class="publicado"
+                                            *matCellDef="let element"> {{gananciaReal() | number: '1.2-2'}} </td>
                                     </ng-container>
 
                                     <ng-container matColumnDef="margenSugeridoPorcentual">
                                         <th mat-header-cell *matHeaderCellDef>Ganancia sugerida</th>
-                                        <td mat-cell class="sugerido" *matCellDef="let element"> {{ gananciaSugerida() / precioSugeridoSinIva() | percent }} </td>
+                                        <td mat-cell class="sugerido"
+                                            *matCellDef="let element"> {{ gananciaSugerida() / precioSugeridoSinIva() | percent }} </td>
                                     </ng-container>
 
                                     <ng-container matColumnDef="margenRealPorcentual">
                                         <th mat-header-cell *matHeaderCellDef>Ganancia real</th>
-                                        <td mat-cell class="publicado" *matCellDef="let element"> {{ gananciaReal() / pvpPublicadoSinIva() | percent }} </td>
+                                        <td mat-cell class="publicado"
+                                            *matCellDef="let element"> {{ gananciaReal() / pvpPublicadoSinIva() | percent }} </td>
                                     </ng-container>
 
                                     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

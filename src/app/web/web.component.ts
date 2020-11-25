@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, Output, EventEmitter} from '@angular/core';
 import {AbstractControl, FormBuilder, FormGroup} from "@angular/forms";
 
 @Component({
@@ -12,9 +12,12 @@ export class WebComponent implements OnInit {
   formControls: {
     pvpSugerido: AbstractControl,
     pvpPublicado: AbstractControl,
+    descuento: AbstractControl,
     precioCosto: AbstractControl,
     precioSinIva: AbstractControl
   }
+
+  @Output() gananciaToParent = new EventEmitter<{}>();
 
   pvpPubSinIvaTT: string;
 
@@ -27,6 +30,7 @@ export class WebComponent implements OnInit {
     this.vuduForm = this.formBuilder.group({
       pvpSugerido: [null],
       pvpPublicado: [null],
+      descuento: [null],
       precioCosto: [null],
       precioSinIva: [null]
     });
@@ -34,11 +38,23 @@ export class WebComponent implements OnInit {
     this.formControls = {
       pvpSugerido: this.vuduForm.get('pvpSugerido'),
       pvpPublicado: this.vuduForm.get('pvpPublicado'),
+      descuento: this.vuduForm.get('descuento'),
       precioCosto: this.vuduForm.get('precioCosto'),
       precioSinIva: this.vuduForm.get('precioSinIva')
     }
 
-    this.pvpPubSinIvaTT = 'Precio publicado sin IVA, ya que el cliente ve el precio con IVA incluido (PVP publicado)'
+    this.pvpPubSinIvaTT = 'Precio publicado sin IVA, ya que el cliente ve el precio con IVA incluido (PVP publicado)';
+
+    this.vuduForm.valueChanges.subscribe(() => {
+      this.gananciaToParent.emit({
+        value: this.pvpPublicadoSinIva() - this.formControls.precioCosto.value,
+        porcentaje: (this.pvpPublicadoSinIva() - this.formControls.precioCosto.value) / this.pvpPublicadoSinIva()
+      });
+    });
+
+    this.formControls.descuento.valueChanges.subscribe(() => {
+
+    });
   }
 
   ngOnInit(): void {

@@ -1,7 +1,9 @@
-import {Component} from '@angular/core';
+import {Component, Inject, Input} from '@angular/core';
 import {AbstractControl, FormBuilder, FormControl, FormGroup} from "@angular/forms";
-import { registerLocaleData } from '@angular/common';
+import {registerLocaleData} from '@angular/common';
 import localeCl from '@angular/common/locales/es-CL';
+import {MAT_SNACK_BAR_DATA, MatSnackBar} from "@angular/material/snack-bar";
+
 registerLocaleData(localeCl, 'cl');
 
 @Component({
@@ -10,6 +12,8 @@ registerLocaleData(localeCl, 'cl');
     styleUrls: ['./linio.component.css']
 })
 export class LinioComponent {
+
+    @Input() gananciaToChild: any;
 
     vuduForm: FormGroup;
     formControls: {
@@ -53,7 +57,8 @@ export class LinioComponent {
     dataSource = [null];
 
     constructor(
-        private formBuilder: FormBuilder
+        private formBuilder: FormBuilder,
+        private _snackBar: MatSnackBar
     ) {
         this.vuduForm = this.formBuilder.group({
             precioCosto: [null],
@@ -138,7 +143,40 @@ export class LinioComponent {
         return this.formControls.ganancia.value / this.netoVentaMenosComision();
     }
 
+    openSnackBar() {
+        this._snackBar.openFromComponent(GananciaWebComponent, {
+            duration: null,
+            data: {
+                value: this.gananciaToChild.value,
+                porcentaje: this.gananciaToChild.porcentaje
+            },
+            horizontalPosition: 'right',
+            verticalPosition: 'top'
+        });
+    }
+
     reiniciar() {
         this.vuduForm.reset();
+    }
+}
+
+@Component({
+    selector: 'snack-bar-ganancia-web-component',
+    template: `<span class="ganancia-web-component">🎲 Margen real web: {{ganancia | number:\'1.2-2\':\'cl\'}}<br>
+        🇨🇱 Porcentaje real web: {{porcentaje | percent}}</span>`,
+    styles: [`
+        .ganancia-web-component {
+            color: white;
+        }
+    `],
+})
+export class GananciaWebComponent {
+
+    ganancia: string;
+    porcentaje: string;
+
+    constructor(@Inject(MAT_SNACK_BAR_DATA) public data: any) {
+        this.ganancia = data.value;
+        this.porcentaje = data.porcentaje
     }
 }

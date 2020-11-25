@@ -22,8 +22,17 @@ table {
     justify-content: center;
 }
 
-.ganancia {
-    color: darkorange;
+.ganancia-up {
+    color: forestgreen;
+}
+
+.ganancia-down {
+    color: red;
+}
+
+.tamano-texto {
+    font-size: 18px;
+    font-weight: bold;
 }
 
 input[type=number]::-webkit-inner-spin-button,

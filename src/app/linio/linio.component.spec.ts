@@ -5,6 +5,8 @@ import {FormBuilder, ReactiveFormsModule} from "@angular/forms";
 import {CUSTOM_ELEMENTS_SCHEMA} from "@angular/core";
 import {MatTableModule} from "@angular/material/table";
 import {ClipboardModule} from "@angular/cdk/clipboard";
+import {MatSnackBar} from "@angular/material/snack-bar";
+import {Overlay} from "@angular/cdk/overlay";
 
 describe('LinioComponent', () => {
     let component: LinioComponent;
@@ -19,7 +21,9 @@ describe('LinioComponent', () => {
                 ClipboardModule
             ],
             providers: [
-                FormBuilder
+                FormBuilder,
+                MatSnackBar,
+                Overlay
             ],
             schemas: [
                 CUSTOM_ELEMENTS_SCHEMA

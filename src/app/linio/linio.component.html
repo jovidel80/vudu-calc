@@ -1,13 +1,27 @@
 <div class="container">
     <div class="mt-5">
-        <mat-card>
-            <mat-card-title>Linio</mat-card-title>
-            <br>
-            <mat-card-content>
-                <div class="container">
-                    <form [formGroup]="vuduForm">
+        <form [formGroup]="vuduForm">
+            <div class="container">
+                <mat-card>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <mat-card-title>Linio</mat-card-title>
+                        </div>
+                        <div class="col-md-2">
+                            <button mat-flat-button color="primary" (click)="reiniciar()">Reset</button>
+                        </div>
+                        <div class="col-md-7">
+                            <button mat-stroked-button color="primary" (click)="openSnackBar()"
+                                    aria-label="Show an example snack-bar">
+                                Ganancia web
+                            </button>
+                        </div>
+                    </div>
+                    <br>
+                    <br>
+                    <mat-card-content>
                         <div class="row">
-                            <div class="col-3">
+                            <div class="col-md-3">
                                 <mat-form-field appearance="outline">
                                     <mat-label> Precio costo
                                     </mat-label>
@@ -18,7 +32,7 @@
                                     </button>
                                 </mat-form-field>
                             </div>
-                            <div class="col-9">
+                            <div class="col-md-9">
                                 <table mat-table [dataSource]="dataSource" class="mat-elevation-z3">
                                     <ng-container matColumnDef="precioCostoIva">
                                         <th mat-header-cell *matHeaderCellDef>IVA</th>
@@ -49,7 +63,7 @@
                         </div>
                         <hr>
                         <div class="row">
-                            <div class="col-3">
+                            <div class="col-md-3">
                                 <div class="row container">
                                     <mat-form-field appearance="outline">
                                         <mat-label> PVP Publicado
@@ -61,11 +75,11 @@
                                         </button>
                                     </mat-form-field>
                                 </div>
-                                <div class="row container centrar">
+                                <div class="row container centrar mb-3">
                                     <span class="material-icons">remove_circle_outline</span>
                                 </div>
                             </div>
-                            <div class="col-9">
+                            <div class="col-md-9">
                                 <table mat-table [dataSource]="dataSource" class="mat-elevation-z3">
                                     <ng-container matColumnDef="netoPublicado">
                                         <th mat-header-cell *matHeaderCellDef>Neto
@@ -98,7 +112,7 @@
                         </div>
                         <hr>
                         <div class="row">
-                            <div class="col-3">
+                            <div class="col-md-3">
                                 <div class="row container">
                                     <mat-form-field appearance="fill">
                                         <mat-label> Comisión Linio
@@ -110,11 +124,11 @@
                                         </button>
                                     </mat-form-field>
                                 </div>
-                                <div class="row container centrar">
+                                <div class="row container centrar mb-3">
                                     <span class="material-icons">remove_circle_outline</span>
                                 </div>
                             </div>
-                            <div class="col-9">
+                            <div class="col-md-9">
                                 <table mat-table [dataSource]="dataSource" class="mat-elevation-z3">
                                     <ng-container matColumnDef="netoLinio">
                                         <th mat-header-cell *matHeaderCellDef>Neto
@@ -147,7 +161,7 @@
                         </div>
                         <hr>
                         <div class="row">
-                            <div class="col-3">
+                            <div class="col-md-3">
                                 <div class="row container">
                                     <mat-form-field appearance="fill">
                                         <mat-label> Envio
@@ -159,11 +173,11 @@
                                         </button>
                                     </mat-form-field>
                                 </div>
-                                <div class="row container centrar">
+                                <div class="row container centrar mb-3">
                                     <span class="material-icons">drag_handle</span>
                                 </div>
                             </div>
-                            <div class="col-9">
+                            <div class="col-md-9">
                                 <table mat-table [dataSource]="dataSource" class="mat-elevation-z3">
                                     <ng-container matColumnDef="netoEnvio">
                                         <th mat-header-cell *matHeaderCellDef>Neto
@@ -196,7 +210,7 @@
                         </div>
                         <hr>
                         <div class="row">
-                            <div class="col-3">
+                            <div class="col-md-3">
                                 <mat-form-field appearance="fill">
                                     <mat-label> Venta - Comisión
                                     </mat-label>
@@ -208,7 +222,7 @@
                                     </button>
                                 </mat-form-field>
                             </div>
-                            <div class="col-9">
+                            <div class="col-md-9">
                                 <table mat-table [dataSource]="dataSource" class="mat-elevation-z3">
                                     <ng-container matColumnDef="netoVentaMenosComision">
                                         <th mat-header-cell *matHeaderCellDef>Neto
@@ -241,24 +255,27 @@
                         </div>
                         <hr>
                         <div class="row">
-                            <div class="col-3">
+                            <div class="col-md-3">
                                 <mat-form-field appearance="fill">
                                     <mat-label> Ganancia
                                     </mat-label>
-                                    <input matInput class="ganancia" formControlName="ganancia" type="number">
+                                    <input matInput
+                                           [ngClass]="ganancia() >= 0.10 ? 'ganancia-up tamano-texto' : 'ganancia-down tamano-texto'"
+                                           formControlName="ganancia" type="number">
                                     <button [cdkCopyToClipboard]="formControls.ganancia.value" mat-icon-button
                                             matSuffix>
                                         <mat-icon>content_copy</mat-icon>
                                     </button>
                                 </mat-form-field>
                             </div>
-                            <div class="col-9">
+                            <div class="col-md-9">
                                 <table mat-table [dataSource]="dataSource" class="mat-elevation-z3">
                                     <ng-container matColumnDef="ganancia">
                                         <th mat-header-cell *matHeaderCellDef>%
                                         </th>
-                                        <td mat-cell class="ganancia"
-                                            *matCellDef="let element"> {{ganancia() | percent}}
+                                        <td mat-cell
+                                            [ngClass]="ganancia() >= 0.10 ? 'ganancia-up tamano-texto' : 'ganancia-down tamano-texto'"
+                                            *matCellDef="let element"> {{ganancia() | percent}} {{ganancia() >= 0.10 ? '🤑' : '😡'}}
                                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button
                                                     [cdkCopyToClipboard]="ganancia() | percent:'1.2-2'" mat-icon-button
                                                     matSuffix>
@@ -272,13 +289,19 @@
                             </div>
                         </div>
                         <div class="row mt-5">
-                            <div class="col">
+                            <div class="col-md-3">
                                 <button mat-flat-button color="primary" (click)="reiniciar()">Reset</button>
                             </div>
+                            <div class="col-md-2">
+                                <button mat-stroked-button color="primary" (click)="openSnackBar()"
+                                        aria-label="Show an example snack-bar">
+                                    Ganancia web
+                                </button>
+                            </div>
                         </div>
-                    </form>
-                </div>
-            </mat-card-content>
-        </mat-card>
+                    </mat-card-content>
+                </mat-card>
+            </div>
+        </form>
     </div>
 </div>

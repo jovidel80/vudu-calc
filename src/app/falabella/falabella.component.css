@@ -1,0 +1,42 @@
+table {
+    width: 100%;
+}
+
+.sugerido {
+    color: darkmagenta;
+}
+
+.publicado {
+    color: mediumpurple;
+}
+
+.costo {
+    color: darkturquoise;
+}
+
+.envio {
+    color: lightcoral;
+}
+
+.centrar {
+    justify-content: center;
+}
+
+.ganancia-up {
+    color: forestgreen;
+}
+
+.ganancia-down {
+    color: red;
+}
+
+.tamano-texto {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
